@@ -1,4 +1,4 @@
-package net.dreamlu.utils;
+package net.dreamlu.event.utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;

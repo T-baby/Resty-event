@@ -1,23 +1,18 @@
 package net.dreamlu.event;
 
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
-import com.jfinal.log.Log;
-import com.jfinal.plugin.IPlugin;
-
+import cn.dreampie.common.Plugin;
+import cn.dreampie.log.Logger;
 import net.dreamlu.event.core.ApplicationListener;
 import net.dreamlu.event.core.Listener;
-import net.dreamlu.utils.ArrayListMultimap;
-import net.dreamlu.utils.BeanUtil;
-import net.dreamlu.utils.ClassUtil;
+import net.dreamlu.event.utils.ArrayListMultimap;
+import net.dreamlu.event.utils.BeanUtil;
+import net.dreamlu.event.utils.ClassUtil;
+
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * 模拟spring的消息机制插件
@@ -27,8 +22,8 @@ import net.dreamlu.utils.ClassUtil;
  * date 2015年4月26日下午10:25:04
  */
 @SuppressWarnings({"rawtypes", "unchecked"})
-public class EventPlugin implements IPlugin {
-	private static Log log = Log.getLog(ClassUtil.class);
+public class EventPlugin implements Plugin {
+	private static Logger log = Logger.getLogger(ClassUtil.class);
 
 	// 线程池
 	private static ExecutorService pool = null;
@@ -68,7 +63,17 @@ public class EventPlugin implements IPlugin {
 		pool = Executors.newFixedThreadPool(nThreads.length == 0 || nThreads[0] < 1 ? 3 : nThreads[0]);
 		return this;
 	}
-
+	
+	/**
+	 * 自定义线程池
+	 * @param executorService 线程池
+	 * @return EventPlugin
+	 */
+	public EventPlugin threadPool(ExecutorService executorService) {
+		pool = executorService;
+		return this;
+	}
+	
 	/**
 	 * 从jar包中搜索监听器
 	 * @return EventPlugin

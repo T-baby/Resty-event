@@ -1,4 +1,4 @@
-package net.dreamlu.utils;
+package net.dreamlu.event.utils;
 
 /**
  * 实体工具类

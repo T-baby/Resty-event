@@ -1,7 +1,7 @@
 package net.dreamlu.event;
 
 import net.dreamlu.event.core.ApplicationEvent;
-import net.dreamlu.utils.ArrayListMultimap;
+import net.dreamlu.event.utils.ArrayListMultimap;
 
 import java.util.Collection;
 import java.util.concurrent.ExecutorService;

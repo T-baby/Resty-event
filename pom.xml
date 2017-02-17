@@ -1,12 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>net.dreamlu</groupId>
-	<version>1.4.0</version>
-	<artifactId>JFinal-event</artifactId>
+	<groupId>com.cybermkd</groupId>
+	<version>1.4.1</version>
+	<artifactId>resty-event</artifactId>
 
-	<name>JFinal-event</name>
-	<description>JFinal-event is a plugin for Java Web Framework JFinal.</description>
+	<name>resty-event</name>
+	<description>Resty-event is a plugin for Java Web Framework Resty.</description>
 	<url>http://www.dreamlu.net/</url>
 
 	<properties>
@@ -15,7 +15,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<jdk.version>1.6</jdk.version>
 		<junit.version>4.8.2</junit.version>
-		<jfinal.version>2.2</jfinal.version>
+		<jfinal.version>3.0</jfinal.version>
 		<log4j.version>1.2.17</log4j.version>
 	</properties>
 
@@ -28,16 +28,29 @@
 
 	<developers>
 		<developer>
-			<name>ChunmengLu</name>
-			<email>qq596392912@gmail.com</email>
+			<name>t-baby</name>
+			<email>myts.designer@gmail.com</email>
 		</developer>
 	</developers>
 
 	<scm>
-		<connection>scm:git:git@git.oschina.net/596392912/JFinal-event</connection>
-		<developerConnection>scm:git:git@git.oschina.net/596392912/JFinal-event.git</developerConnection>
-		<url>git@git.oschina.net/596392912/JFinal-event.git</url>
+		<connection>scm:git:git@github.com/T-baby/Resty-event</connection>
+		<developerConnection>scm:git:git@github.com/T-baby/Resty-event</developerConnection>
+		<url>git@github.com/T-baby/Resty-event</url>
 	</scm>
+
+	<repositories>
+		<repository>
+			<id>oss-snapshots</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 
 	<dependencies>
 		<dependency>
@@ -46,18 +59,13 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
+
 		<dependency>
-			<groupId>com.jfinal</groupId>
-			<artifactId>jfinal</artifactId>
-			<version>${jfinal.version}</version>
-			<scope>provided</scope>
+			<groupId>cn.dreampie</groupId>
+			<artifactId>resty-route</artifactId>
+			<version>1.2.0-SNAPSHOT</version>
 		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>${log4j.version}</version>
-			<scope>provided</scope>
-		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -94,7 +102,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-source-plugin</artifactId>
-						<version>2.2.1</version>
+						<version>2.4</version>
 						<executions>
 							<execution>
 								<phase>package</phase>
@@ -108,7 +116,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>2.9.1</version>
+						<version>2.10.4</version>
 						<executions>
 							<execution>
 								<phase>package</phase>
@@ -122,7 +130,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
-						<version>1.5</version>
+						<version>1.6</version>
 						<executions>
 							<execution>
 								<phase>verify</phase>

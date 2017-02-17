@@ -1,13 +1,13 @@
 模仿的Spring中的消息事件：[详解Spring事件驱动模型](http://jinnianshilongnian.iteye.com/blog/1902886)
 
-专为JFinal设计，无任何第三方依赖，小巧玲珑。
+本插件移植于JFinal-event，使用方法与JFinal-event一致。无任何第三方依赖，小巧玲珑。
 
-:laughing: `JFinal`event 插件，使用请查看[文档 wiki](http://git.oschina.net/596392912/JFinal-event/wikis/home)
+:laughing: `Resty`event 插件，使用请查看[文档 wiki](http://git.oschina.net/596392912/JFinal-event/wikis/home)
 
 ```
 // 初始化插件
 EventPlugin plugin = new EventPlugin();
-// 设置为异步，默认同步
+// 设置为异步，默认同步，或者使用`threadPool(ExecutorService executorService)`自定义线程池。
 plugin.async();
 
 // 设置扫描jar包，默认不扫描
@@ -15,7 +15,7 @@ plugin.scanJar();
 // 设置监听器默认包，默认全扫描
 plugin.scanPackage("net.dreamlu");
 
-// 启动插件
+// 手动启动插件，用于main方法启动，jfinal中不需要，添加插件即可。
 plugin.start();
 
 // 发送第一个消息
@@ -25,7 +25,7 @@ EventKit.post("save", new Test2Event(123123));
 
 Thread.sleep(1000);
 
-// 停止插件
+// 停止插件，用于main方法测试
 plugin.stop();
 ```
 
@@ -45,13 +45,16 @@ http://maven.aliyun.com/nexus/#nexus-search;quick~jfinal-event
 <dependency>
     <groupId>net.dreamlu</groupId>
     <artifactId>JFinal-event</artifactId>
-    <version>1.4.0</version>
+    <version>1.4.1</version>
 </dependency>
 ```
 
 欢迎拍砖~~~
 
 ## 更新说明
+>## 2017-02-15 v1.4.1
+>1. 添加自定义线程池EventPlugin.threadPool(ExecutorService executorService)方法
+
 >## 2016-08-19 v1.4.0
 >1. 升级到JFinal2.2，JFinal低版本用户请使用`v1.2.0`。
 >2. `EventKit.postEvent(event)`更改为`EventKit.post(event)`，`postEvent`不再建议使用。
@@ -78,13 +81,6 @@ http://maven.aliyun.com/nexus/#nexus-search;quick~jfinal-event
 >## 2015-05-21 v0.2
 >1. 添加@Listener注解，方便使用
 
-## 交流群
-如梦技术：[`237587118`](http://shang.qq.com/wpa/qunwpa?idkey=f78fcb750b4f72c92ff4d375d2884dd69b552301a1f2681af956bd32700eb2c0)
-
-## 捐助共勉
-<img src="http://soft.dreamlu.net/weixin-9.jpg" width = "200" alt="微信捐助" align=center />
-<img src="http://soft.dreamlu.net/alipay.png" width = "200" alt="支付宝捐助" align=center />
-<img src="http://soft.dreamlu.net/qq-9.jpg" width = "200" alt="QQ捐助" align=center />
 
 ## License
 

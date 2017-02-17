@@ -1,7 +1,7 @@
-package net.dreamlu.utils;
+package net.dreamlu.event.utils;
 
-import com.jfinal.kit.StrKit;
-import com.jfinal.log.Log;
+
+import cn.dreampie.log.Logger;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -28,7 +28,7 @@ import java.util.jar.JarFile;
  *
  */
 public final class ClassUtil {
-	private static Log log = Log.getLog(ClassUtil.class);
+	private static Logger log = Logger.getLogger(ClassUtil.class);
 
 	// 静态类不可实例化
 	private ClassUtil() {}
@@ -85,7 +85,7 @@ public final class ClassUtil {
 	 * @return 类集合
 	 */
 	public static Set<Class<?>> scanPackage(String packageName, boolean inJar, ClassFilter classFilter) {
-		if(StrKit.isBlank(packageName)) {
+		if(packageName==null||packageName.equals("")) {
 			packageName = "";
 		}
 		packageName = getWellFormedPackageName(packageName);
@@ -285,7 +285,7 @@ public final class ClassUtil {
 			classPath += File.separator;
 		}
 		String path = file.getAbsolutePath();
-		if(StrKit.isBlank(packageName)) {
+		if(packageName==null||packageName.equals("")) {
 			path = removePrefix(path, classPath);
 		}
 		final String filePathWithDot = path.replace(File.separator, ".");
